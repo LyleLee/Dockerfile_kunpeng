@@ -5,7 +5,7 @@ Build docker images on kunpeng. Make it easy to test on specific software.
 usage:
 
 ```
-git clone https://github.com/LyleLee/Dockerfile_kunpeng.gi
+git clone git@github.com:LyleLee/Dockerfile_kunpeng.git
 cd Dockerfile_kunpeng
 cd Dockerfile_ubuntu_pocl ## could be another dir
 docker build -t pocl .
