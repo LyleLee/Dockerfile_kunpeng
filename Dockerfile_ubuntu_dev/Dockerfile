@@ -5,7 +5,7 @@ ENV REFRESHED_AT 2020-04-18
 COPY sources.list /etc/apt/sources.list
 RUN apt update && \
     apt install -y dialog apt-utils && \
-    apt install -y ca-certificates ruby ruby-dev gcc g++ make cmake openssh-server openssh-client openssh-sftp-server ssh-import-id vim git
+    apt install -y ca-certificates iproute2 iputils-ping wget curl gcc g++ make cmake openssh-server openssh-client openssh-sftp-server ssh-import-id vim git
 RUN apt clean && mkdir -p /run/sshd && echo 'root:root' |chpasswd && echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
 
 VOLUME /root/user1
