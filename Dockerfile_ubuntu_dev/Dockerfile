@@ -10,6 +10,11 @@ RUN mkdir -p /run/sshd && echo 'root:root' |chpasswd && echo 'PermitRootLogin ye
 ENV TZ=Asia/Hong_Kong
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 2000 banana && echo 'banana:good' | chpasswd
-USER banana
-WORKDIR /home/banana
+ARG USER=banana
+ARG USER_ID=1000
+ARG GROUP_ID=1000
+ARG PASSWORD=good
+
+RUN groupadd -g ${GROUP_ID} ${USER} && useradd --create-home --uid=${USER_ID} --gid=${GROUP_ID} -G sudo "${USER}" && echo "${USER}:${PASSWORD}" | chpasswd
+USER "${USER}"
+WORKDIR /home/"${USER}"
