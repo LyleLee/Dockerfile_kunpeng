@@ -1,0 +1,20 @@
+version: '3.3'
+services:
+  filecoinDevelopment:
+    build:
+      context: .
+      args:
+        GOPROXY: 'http://192.168.1.201:70'
+        GO111MODULE: 'on'
+    image: lixianfadocker/filecoin
+    container_name: filecoin
+    volumes:
+      - ./lotus:/home/banana/lotus:rw
+      - ./go-filecoin:/home/banana/go-filecoin:rw
+      - /var/tmp/filecoin-parents:/var/tmp/filecoin-parents:rw
+      - /var/tmp/filecoin-proof-parameters:/var/tmp/filecoin-proof-parameters:rw
+      - ./registry:/home/banana/.cargo/registry:rw
+      - ./other:/home/banana/other:rw
+    stdin_open: true
+    tty: true
+    command: tail -f /dev/null
