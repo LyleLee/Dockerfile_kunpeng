@@ -17,7 +17,7 @@ ENV PATH="$PATH:/usr/local/go/bin"
 USER banana
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --verbose --default-toolchain none
-ENV PATH="${PATH}:/home/banana/.cargo/bin/"
+ENV PATH="${PATH}:/home/banana/.cargo/bin"
 RUN rustup toolchain install stable && rustup run stable rustc --version
 RUN rustup toolchain install nightly && rustup run nightly rustc --version
 
