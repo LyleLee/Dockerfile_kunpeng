@@ -1,0 +1,32 @@
+From 683d9efcbf79b5041d907d56652f3299bc2bd990 Mon Sep 17 00:00:00 2001
+From: lixianfa <lixianfa.official@gmail.com>
+Date: Mon, 27 Jul 2020 11:11:37 +0800
+Subject: [PATCH] patch to run on arm64
+
+---
+ rust/Cargo.toml     | 4 ++++
+ rust/rust-toolchain | 2 +-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/rust/Cargo.toml b/rust/Cargo.toml
+index 7951eea..2e8f89e 100644
+--- a/rust/Cargo.toml
++++ b/rust/Cargo.toml
+@@ -43,3 +43,7 @@ cbindgen = "= 0.14.0"
+ [dev-dependencies]
+ tempfile = "3.0.8"
+ 
++[patch.crates-io]
++filecoin-proofs = { git = "https://github.com/filecoin-project/rust-fil-proofs", branch= "feat/aarch64" }
++fil-sapling-crypto = { git = "https://github.com/filecoin-project/sapling-crypto", rev = "712d5dc" }
++fff = { git = "https://github.com/filecoin-project/ff", rev = "5fd551e" }
+diff --git a/rust/rust-toolchain b/rust/rust-toolchain
+index 3987c47..bf867e0 100644
+--- a/rust/rust-toolchain
++++ b/rust/rust-toolchain
+@@ -1 +1 @@
+-1.43.1
++nightly
+-- 
+2.17.1
+
