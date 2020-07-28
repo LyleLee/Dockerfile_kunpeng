@@ -9,12 +9,13 @@ services:
     image: lixianfadocker/filecoin
     container_name: filecoin
     volumes:
-      - ./lotus:/home/banana/lotus:rw
-      - ./go-filecoin:/home/banana/go-filecoin:rw
+      - ./lotus:${HOMEDIR}/lotus:rw
+      - ./go-filecoin:${HOMEDIR}/go-filecoin:rw
+      - ./other:${HOMEDIR}/other:rw
+      - ./.cargo:${HOMEDIR}/.cargo:rw
+      - ./.rustup:${HOMEDIR}/.rustup:rw
       - /var/tmp/filecoin-parents:/var/tmp/filecoin-parents:rw
       - /var/tmp/filecoin-proof-parameters:/var/tmp/filecoin-proof-parameters:rw
-      - ./registry:/home/banana/.cargo/registry:rw
-      - ./other:/home/banana/other:rw
     stdin_open: true
     tty: true
     command: tail -f /dev/null
