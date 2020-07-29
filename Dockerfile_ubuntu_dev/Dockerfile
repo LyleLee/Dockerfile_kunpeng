@@ -4,7 +4,7 @@ ENV REFRESHED_AT 2020-04-18
 
 RUN apt update && \
     apt install -y dialog apt-utils sudo bash-completion tzdata && \
-    apt install -y ca-certificates iproute2 iputils-ping wget curl vim rsync git openssh-server openssh-client openssh-sftp-server ssh-import-id  && \
+    apt install -y ca-certificates pkg-config jq iproute2 iputils-ping wget curl vim rsync git openssh-server openssh-client openssh-sftp-server ssh-import-id  && \
     apt install -y gcc g++ make cmake && apt clean
 RUN mkdir -p /run/sshd && echo 'root:root' |chpasswd && echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
 ENV TZ=Asia/Hong_Kong
